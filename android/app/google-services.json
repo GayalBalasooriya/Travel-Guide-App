@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "325954850207",
+    "firebase_url": "https://authentication-31bdb.firebaseio.com",
+    "project_id": "authentication-31bdb",
+    "storage_bucket": "authentication-31bdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325954850207:android:f0f7a9b2cb0e4897d641aa",
+        "android_client_info": {
+          "package_name": "com.example.travelapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "325954850207-dmsu9rn1i5u4dnk3i854uuq2b7vomfp2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.travelapp",
+            "certificate_hash": "e646507c930449148967d3a2e292d5069a8a6593"
+          }
+        },
+        {
+          "client_id": "325954850207-bm7u6e09a7ck68gfn8veg6f7805jq2f2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUnoT7RR-phoe6QSWwqSJ9DIv8TBkzk9o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "325954850207-bm7u6e09a7ck68gfn8veg6f7805jq2f2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
