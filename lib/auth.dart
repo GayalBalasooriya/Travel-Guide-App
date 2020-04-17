@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:travel_app/register.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -13,6 +14,7 @@ class _LoginPageState extends State<LoginPage> {
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
 
   final GoogleSignIn _googleSignIn = GoogleSignIn();
+ // final facebookSignIn = FacebookLogin();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future<FirebaseUser> _signInGoogle() async {
@@ -28,6 +30,21 @@ class _LoginPageState extends State<LoginPage> {
     print("signed in " + user.displayName);
     return user;
   }
+  
+  
+
+ Future<FirebaseUser> _signInWithFB() async {
+    
+    final facebookLogin = FacebookLogin();
+    final result = await facebookLogin.logIn(['email']);
+    final FacebookAccessToken accessToken = result.accessToken;
+          
+    final AuthCredential credential = FacebookAuthProvider.getCredential(accessToken: accessToken.token);
+    FirebaseUser user = (await _auth.signInWithCredential(credential)).user;
+     print("signed in " + user.displayName);
+    return user;
+  }
+
   @override
   Widget build(BuildContext context) {
         final loginGmail = Material(
@@ -38,15 +55,14 @@ class _LoginPageState extends State<LoginPage> {
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
             onPressed: () {
-             _signInGoogle()
+              _signInGoogle()
               .then((FirebaseUser user) => 
-                  //print(user),
                   Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Register()),
                   )
                 )
-              .catchError((e) => print(e));
+              .catchError((e) => print(e));   
             },
             child: Text("Login With Gmail",
                 textAlign: TextAlign.center,
@@ -62,7 +78,14 @@ class _LoginPageState extends State<LoginPage> {
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
             onPressed: () {
-
+              _signInWithFB()
+              .then((FirebaseUser user) => 
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Register()),
+                  )
+                )
+              .catchError((e) => print(e));
             },
             child: Text("Login With Facebook",
                 textAlign: TextAlign.center,
